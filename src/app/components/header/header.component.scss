@@ -1,0 +1,80 @@
+@import '../../../styles.scss';
+
+mat-toolbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.4em 1em;
+  box-shadow: 0 0 16px 0 rgba(0,0,0, 0.08);
+
+  #logo{
+    margin-right: 4px;
+  }
+
+  .container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  #left{
+
+    #toggle-group .toggle{
+      color: #666666;
+    }
+
+    .mat-button-toggle-checked.toggle{
+      color: #ffffff;
+      background: $default-gradient;
+    }
+
+    mat-form-field{
+      font-weight: 300;
+      font-size: 14px;
+      color: #666666;
+      margin-left: 2.9em;
+
+      mat-label{
+        color: #333333;
+      }
+
+      mat-icon{
+        font-size: 24px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  #right{
+
+    .filter{
+      width: 48px;
+
+      mat-icon{
+        vertical-align: text-bottom;
+      }
+    }
+
+    .add-user{
+      margin-left: 8px;
+      margin-right: 24px;
+
+      mat-icon{
+        font-size: 20px;
+        padding-right: 8px;
+        vertical-align: bottom;
+      }
+    }
+
+    .system{
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+
+      mat-icon{
+        font-size: 20px;
+        color: #666666;
+      }
+    }
+  }
+}

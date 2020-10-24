@@ -1,0 +1,100 @@
+@import '../../../styles.scss';
+
+.container{
+  background-color: #333333;
+  height: 47px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  color: $dark-grey;
+
+  p{
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    font-style: italic;
+  }
+
+  .left{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+    mat-icon{
+      color: #666666;
+      margin-right: 8px;
+    }
+
+    .live-bg{
+      width: 100px;
+      height: 0;
+      opacity: 0.4;
+      border-bottom: 47px solid #222;
+      border-right: 42px solid transparent;
+      position: absolute;
+      bottom: 0;
+      z-index: 0;
+    }
+
+    .live{
+      display: flex;
+      align-items: center;
+      margin-left: 16px;
+      font-size: 16px;
+      color: #FF8700;
+      background-color: transparent;
+      z-index: 100;
+
+      p{
+        font: 400 12px/15px Audiowide;
+        margin-left: 6.61px;
+      }
+    }
+
+    .schedule{
+      display: flex;
+      align-items: center;
+      margin-left: 5em;
+
+      p{
+        #name{
+          font-weight: 500;
+          font-style: normal;
+        }
+
+        #time{
+          font-style: normal;
+          font-weight: 700;
+        }
+      }
+    }
+
+    .updated{
+      display: flex;
+      align-items: center;
+      margin-left: 2em;
+    }
+  }
+
+  .right{
+    text-transform: capitalize;
+    margin-right: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    span{
+      font-weight: 500;
+    }
+
+    p.hour{
+      margin-left: 16px;
+      color: #FF8700;
+      font: 400 24px/31px Audiowide;
+    }
+  }
+}

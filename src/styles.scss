@@ -1,1 +1,75 @@
-/* You can add global styles to this file, and also import other style files */
+$default-gradient: linear-gradient(225deg, #FF8700, #D83367);
+$light-grey: #F5F5F5;
+$dark-grey: #E9E9E9;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: $light-grey;}
+
+.button-pink{
+  background-color: #D83367;
+  height: 48px;
+  color: #FFFFFF;
+  font-size: 14px;
+}
+
+.button-white{
+  font-size: 20px;
+  background-color: #ffffff;
+  color: #666666;
+  border-radius: 4px;
+  height: 48px;
+}
+
+app-header{
+
+  mat-toolbar{
+
+    mat-button-toggle-group{
+      border: 0 !important;
+      margin-left: 24px;
+
+      mat-button-toggle.toggle{
+       .mat-button-toggle-label-content {
+         padding: 0 16px !important;
+       }
+      }
+    }
+
+    mat-form-field{
+      width: 290px;
+      color: #666666;
+      margin-top: 1.25em;
+
+      div.mat-form-field-wrapper{
+        .mat-form-field-infix{
+          color: #333333;
+          padding: 0.7375em 0 !important;
+        }
+
+        div.mat-form-field-underline{
+          color: $dark-grey;
+          height: 2px;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
+
+app-users-table{
+
+  .mat-column-checkbox{
+    width: 11%;
+
+    mat-checkbox label div.mat-checkbox-inner-container{
+      height: 20px;
+      width: 20px;
+
+      .mat-checkbox-frame{
+        border-color: $dark-grey;
+        border-radius: 4px;
+        background-color: #FFFFFF;
+      }
+    }
+  }
+}

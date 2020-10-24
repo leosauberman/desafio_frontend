@@ -1,0 +1,66 @@
+<mat-sidenav-container hasBackdrop>
+    <mat-sidenav></mat-sidenav>
+    <mat-sidenav-content>
+      <div class="container">
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
+
+            <ng-container matColumnDef="checkbox">
+              <th mat-header-cell *matHeaderCellDef>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox></mat-checkbox>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="user">
+            <th mat-header-cell *matHeaderCellDef>Usuário</th>
+            <td mat-cell *matCellDef="let row">{{row.user}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let row">{{row.email}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="dtInclusion">
+            <th mat-header-cell *matHeaderCellDef>Data de Inclusão</th>
+            <td mat-cell *matCellDef="let row">{{row.dtInclusion}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="dtModified">
+            <th mat-header-cell *matHeaderCellDef>Data de Alteração</th>
+            <td mat-cell *matCellDef="let row">{{row.dtModified}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="rules">
+            <th mat-header-cell *matHeaderCellDef>Regras</th>
+            <td mat-cell *matCellDef="let row">{{row.rules}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let row">{{row.status}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Ações</th>
+            <td mat-cell *matCellDef="let row">
+              <!-- <button mat-icon-button *ngIf="selected"></button> -->
+              <button mat-icon-button><mat-icon inline>more_horiz</mat-icon></button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="columns"></tr>
+          <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+        </table>
+
+        <div class="paginator">
+          <button mat-raised-button class="left" [disabled]="dataSource.data.length <= 8">Primeiro</button>
+          <button mat-raised-button class="left" [disabled]="dataSource.data.length <= 8">Anterior</button>
+          <button mat-flat-button class="button-pink">1</button>
+          <button mat-raised-button [disabled]="dataSource.data.length <= 8">Próximo</button>
+          <button mat-raised-button [disabled]="dataSource.data.length <= 8">Último</button>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
