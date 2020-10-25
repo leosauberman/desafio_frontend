@@ -6,4 +6,5 @@ import { Subject } from 'rxjs';
 })
 export class SharedService {
   filterToggle = new Subject();
+  filterString = new Subject<string>();
 }

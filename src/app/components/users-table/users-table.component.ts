@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatTableDataSource } from '@angular/material/table';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -10,26 +12,42 @@ import { SharedService } from 'src/app/shared/shared.service';
   templateUrl: './users-table.component.html',
   styleUrls: ['./users-table.component.scss']
 })
-export class UsersTableComponent implements OnInit {
+export class UsersTableComponent implements OnInit, OnDestroy {
   columns: string[] = ['checkbox', 'user', 'email', 'dtInclusion', 'dtModified', 'rules', 'status', 'actions'];
   dataSource = new MatTableDataSource<User>();
   selected = [];
 
+  private unsubscribe$ = new Subject<void>();
+
   constructor(
     private service: UserService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private sharedService: SharedService,
   ) { }
 
   ngOnInit(): void {
     this.loadData();
+
+    this.sharedService.filterString
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((value: string) => {
+        this.dataSource.filter = value;
+      })
+  }
+
+  ngOnDestroy(){
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   loadData() {
-    this.service.getUsers().subscribe((data: User[]) => {
-      this.dataSource.data = data;
-      this.dataSource.data.forEach((u: User) => {
-        this.selected.push(false);
-      });
+    this.service.getUsers()
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((data: User[]) => {
+        this.dataSource.data = data;
+        this.dataSource.data.forEach((u: User) => {
+          this.selected.push(false);
+        });
     });
   }
 

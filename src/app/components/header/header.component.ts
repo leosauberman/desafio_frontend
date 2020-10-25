@@ -18,7 +18,7 @@ import { SharedService } from 'src/app/shared/shared.service';
         </mat-button-toggle-group>
         <mat-form-field>
           <mat-label><i>Pesquisar...</i></mat-label>
-          <input matInput />
+          <input matInput (keyup)="filterUsers($event)"/>
           <mat-icon matSuffix [inline]="true">search</mat-icon>
         </mat-form-field>
       </div>
@@ -51,4 +51,8 @@ export class HeaderComponent implements OnInit {
     this.sharedService.filterToggle.next();
   }
 
+  filterUsers(ev: Event){
+    const filterValue = (ev.target as HTMLInputElement).value;
+    this.sharedService.filterString.next(filterValue.trim().toLowerCase());
+  }
 }
