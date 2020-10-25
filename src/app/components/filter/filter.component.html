@@ -4,7 +4,7 @@
       <mat-icon inline class="icon">tune</mat-icon>
       <h2>FILTROS</h2>
     </div>
-    <button mat-icon-button class="button-white mat-elevation-z2">
+    <button mat-icon-button (click)="toggleFilter()" class="button-white mat-elevation-z2">
       <mat-icon inline>close</mat-icon>
     </button>
   </header>
@@ -13,24 +13,51 @@
       <p>Utilize os filtros abaixo para refinar os resultados da tabela, clique no botão APLICAR para salvar as alterações.</p>
       <mat-divider></mat-divider>
 
-      <form>
+      <form [formGroup]="filtros">
         <mat-form-field appearance="legacy">
-          <mat-date-range-input [rangePicker]="picker">
-            <input matStartDate placeholder="Todas as datas de inclusão"/>
-            <input matEndDate placeholder="Todas as datas de inclusão"/>
+          <mat-label *ngIf="filtros.get('inclusao').touched; else placeholder">Datas de Inclusão</mat-label>
+          <ng-template #placeholder>
+            <mat-label>Todas as datas de inclusão</mat-label>
+          </ng-template>
+          <mat-date-range-input [rangePicker]="pickerInclusao" formGroupName="inclusao">
+            <input matStartDate formControlName="inicio"/>
+            <input matEndDate formControlName="fim"/>
           </mat-date-range-input>
-          <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-datepicker-toggle matSuffix [for]="pickerInclusao">
             <mat-icon matDatepickerToggleIcon inline>arrow_drop_down</mat-icon>
           </mat-datepicker-toggle>
           <mat-icon matPrefix inline>date_range</mat-icon>
-          <mat-date-range-picker #picker></mat-date-range-picker>
+          <mat-date-range-picker #pickerInclusao></mat-date-range-picker>
         </mat-form-field>
-        <!-- <mat-form-field>
-          <mat-select>
-            <mat-option value="">Todas as datas de inclusão</mat-option>
+
+        <mat-form-field appearance="legacy">
+          <mat-label *ngIf="filtros.get('alteracao').touched; else placeholderAlteracao">Datas de Alteração</mat-label>
+          <ng-template #placeholderAlteracao>
+            <mat-label>Todas as Datas de Alteração</mat-label>
+          </ng-template>
+          <mat-date-range-input [rangePicker]="pickerAlteracao" formGroupName="alteracao">
+            <input matStartDate formControlName="inicio"/>
+            <input matEndDate formControlName="fim"/>
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="pickerAlteracao">
+            <mat-icon matDatepickerToggleIcon inline>arrow_drop_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-icon matPrefix inline>date_range</mat-icon>
+          <mat-date-range-picker #pickerAlteracao></mat-date-range-picker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-icon matPrefix inline>hdr_strong</mat-icon>
+          <mat-label *ngIf="filtros.get('status').untouched; else statusPlaceholder">Ativos e Inativos</mat-label>
+          <ng-template #statusPlaceholder><mat-label>Status</mat-label></ng-template>
+          <mat-select formControlName="status">
+            <mat-option value="1">Ativos</mat-option>
+            <mat-option value="2">Inativos</mat-option>
+            <mat-option value="3">Ativos e Inativos</mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field></mat-form-field> -->
+
+        <button mat-flat-button class="button-pink" [disabled]="filtros.untouched">APLICAR</button>
       </form>
     </div>
   </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'app-filter',
@@ -7,9 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilterComponent implements OnInit {
 
-  constructor() { }
+  filtros: FormGroup;
+
+  constructor(
+    private fb: FormBuilder,
+    private sharedService: SharedService
+  ) { }
 
   ngOnInit(): void {
+    this.buildForm();
   }
 
+  buildForm(){
+    this.filtros = this.fb.group({
+      inclusao: this.fb.group({
+        inicio: [null],
+        fim: [null]
+      }),
+      alteracao: this.fb.group({
+        inicio: [null],
+        fim: [null]
+      }),
+      status: [3]
+    });
+  }
+
+  toggleFilter(){
+    this.sharedService.filterToggle.next();
+  }
 }

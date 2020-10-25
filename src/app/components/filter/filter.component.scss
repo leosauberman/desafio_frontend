@@ -4,7 +4,6 @@
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-  justify-content: space-between;
   background-color: $light-grey;
   max-width: 27em;
   height: 100vh;
@@ -55,6 +54,23 @@
         width: 24px;
         border-top-width: 4px;
         color: $dark-grey;
+      }
+
+      form{
+        margin-top: 2em;
+        display: flex;
+        flex-flow: column wrap;
+
+        .button-pink{
+          margin-top: 2em;
+
+          &:disabled{
+            opacity: 0.4;
+            border: 1px solid #D83367;
+            background-color: transparent;
+            color: #D83367;
+          }
+        }
       }
     }
   }
