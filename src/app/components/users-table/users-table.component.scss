@@ -101,6 +101,15 @@ mat-sidenav-content{
       tr:nth-child(odd){
         background-color: $light-grey;
       }
+
+      tr.actions{
+
+        td:not(.mat-column-actions){
+          background-color: #FFF !important;
+          opacity: 0.12;
+        }
+      }
+
     }
 
     .paginator{

@@ -45,8 +45,15 @@
           <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef>Ações</th>
             <td mat-cell *matCellDef="let row">
-              <!-- <button mat-icon-button *ngIf="selected"></button> -->
-              <button mat-icon-button><mat-icon inline>more_horiz</mat-icon></button>
+              <button mat-icon-button class="actions-button" *ngIf="selected[row.id - 1]">
+                <mat-icon inline>delete</mat-icon>
+              </button>
+              <button mat-icon-button class="actions-button" *ngIf="selected[row.id - 1]">
+                <mat-icon inline>mode_edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="showActions($event, row)">
+                <mat-icon inline>more_horiz</mat-icon>
+              </button>
             </td>
           </ng-container>
 

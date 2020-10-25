@@ -8,6 +8,7 @@ export class User {
   dtModified: string;
   rules: string;
   status: string;
+  selected = false;
 
   static deserialize(obj: any): User{
     const model = new User();
