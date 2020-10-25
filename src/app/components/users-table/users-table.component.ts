@@ -1,7 +1,9 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'app-users-table',

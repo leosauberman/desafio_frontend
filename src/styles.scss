@@ -18,6 +18,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
   color: #666666;
   border-radius: 4px;
   height: 48px;
+  width: 48px;
+
+  mat-icon{
+    vertical-align: text-bottom;
+  }
 }
 
 app-header{
@@ -69,6 +74,45 @@ app-users-table{
         border-color: $dark-grey;
         border-radius: 4px;
         background-color: #FFFFFF;
+      }
+    }
+  }
+}
+
+app-filter{
+  mat-form-field {
+    width: 100%;
+    text-transform: uppercase;
+
+    .mat-form-field-wrapper{
+      .mat-form-field-flex{
+        align-items: center;
+      }
+
+      .mat-form-field-prefix, .mat-form-field-suffix button{
+        margin-top: 12px;
+      }
+
+      .mat-form-field-label{
+        color: #D83367;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+      }
+
+      .mat-form-field-label, .mat-input-element{
+        margin-left: 16px;
+      }
+
+      div.mat-form-field-underline{
+        background-color: $dark-grey;
+        height: 2px;
+        bottom: 5px;
+      }
+
+      mat-icon.mat-icon{
+        font-size: 20px !important;
+        color: #999999;
       }
     }
   }

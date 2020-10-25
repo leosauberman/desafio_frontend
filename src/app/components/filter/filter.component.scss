@@ -1,0 +1,61 @@
+@import '../../../styles.scss';
+
+.container{
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $light-grey;
+  max-width: 27em;
+  height: 100vh;
+
+  header{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 92%;
+    padding: 1.5em 1em;
+    background-color: #FFFFFF;
+
+    .align-left {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 7.4em;
+
+      .icon{
+        font-size: 24px;
+        color: #999999;
+      }
+
+      h2{
+        font: 400 16px/21px Audiowide;
+        color: #333333;
+
+      }
+    }
+  }
+
+  .content{
+    width: 100%;
+    margin-top: 40px;
+
+    .inner-container{
+      padding: 0px 24px;
+
+      p{
+        font-size: 14px;
+        line-height: 17px;
+        color: #666666;
+        font-style: italic;
+      }
+
+      mat-divider{
+        width: 24px;
+        border-top-width: 4px;
+        color: $dark-grey;
+      }
+    }
+  }
+}

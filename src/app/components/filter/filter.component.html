@@ -1,0 +1,37 @@
+<div class="container">
+  <header>
+    <div class="align-left">
+      <mat-icon inline class="icon">tune</mat-icon>
+      <h2>FILTROS</h2>
+    </div>
+    <button mat-icon-button class="button-white mat-elevation-z2">
+      <mat-icon inline>close</mat-icon>
+    </button>
+  </header>
+  <div class="content">
+    <div class="inner-container">
+      <p>Utilize os filtros abaixo para refinar os resultados da tabela, clique no botão APLICAR para salvar as alterações.</p>
+      <mat-divider></mat-divider>
+
+      <form>
+        <mat-form-field appearance="legacy">
+          <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate placeholder="Todas as datas de inclusão"/>
+            <input matEndDate placeholder="Todas as datas de inclusão"/>
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon inline>arrow_drop_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-icon matPrefix inline>date_range</mat-icon>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+        <!-- <mat-form-field>
+          <mat-select>
+            <mat-option value="">Todas as datas de inclusão</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field></mat-form-field> -->
+      </form>
+    </div>
+  </div>
+</div>

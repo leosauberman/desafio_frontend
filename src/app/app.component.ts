@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
+import { SharedService } from './shared/shared.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend';
+
+  @ViewChild('sidenav') sidenav: MatSidenav;
+
+  constructor(
+    private sharedService: SharedService
+  ){}
+
+  ngOnInit() {
+    this.sharedService.filterToggle.subscribe(() => {
+      this.sidenav.toggle();
+    });
+  }
+
+  ngOnDestroy(){
+    this.sharedService.filterToggle.unsubscribe();
+  }
 }

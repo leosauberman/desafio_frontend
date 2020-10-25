@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'app-header',
@@ -23,7 +24,10 @@ import { Component, OnInit } from '@angular/core';
       </div>
 
       <div class="container" id="right">
-        <button mat-icon-button class="filter mat-elevation-z4 button-white"><mat-icon [inline]="true">tune</mat-icon></button>
+        <button mat-icon-button (click)="toggleFilter()"
+          class="filter mat-elevation-z4 button-white">
+          <mat-icon [inline]="true">tune</mat-icon>
+        </button>
         <button mat-flat-button class="add-user button-pink"><mat-icon [inline]="true">person</mat-icon>INCLUIR USUÁRIO</button>
         <mat-divider vertical style="height: 24px; color: $dark-grey; margin-right: 4px"></mat-divider>
         <div class="system">
@@ -38,9 +42,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit(): void {
+  }
+
+  toggleFilter(){
+    this.sharedService.filterToggle.next();
   }
 
 }
