@@ -53,6 +53,15 @@
       "dtModified": "30/05/2019",
       "rules": "02",
       "status": "Ativo"
+    },
+    {
+      "id": "7",
+      "user": "LMORAES",
+      "email": "leonardo.moraes@tvglobo.com.br",
+      "dtInclusion": "28/10/2020",
+      "dtModified": "30/10/2020",
+      "rules": "02",
+      "status": "Ativo"
     }
   ]
 }

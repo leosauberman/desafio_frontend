@@ -57,7 +57,10 @@
           </mat-select>
         </mat-form-field>
 
-        <button mat-flat-button class="button-pink" [disabled]="filtros.untouched">APLICAR</button>
+        <button mat-flat-button (click)="applyFilters()"
+          class="button-pink" [disabled]="filtros.untouched">APLICAR</button>
+        <button mat-stroked-button (click)="cleanFilters()"
+          class="button-white" [disabled]="filtros.untouched">LIMPAR FILTROS</button>
       </form>
     </div>
   </div>

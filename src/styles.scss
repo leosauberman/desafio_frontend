@@ -38,6 +38,11 @@ app-header{
          padding: 0 16px !important;
        }
       }
+
+      .mat-button-toggle-checked.toggle .mat-button-toggle-focus-overlay{
+        border-bottom: 0;
+        background-color: transparent!important;
+      }
     }
 
     mat-form-field{

@@ -1,11 +1,11 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { SharedService } from 'src/app/shared/shared.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-users-table',
@@ -31,8 +31,16 @@ export class UsersTableComponent implements OnInit, OnDestroy {
     this.sharedService.filterString
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((value: string) => {
+        this.dataSource.filterPredicate = (row: User, filter: string) => row.user.toLowerCase().includes(filter);
         this.dataSource.filter = value;
-      })
+      });
+
+    this.sharedService.filterValue
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((filtros: string) => {
+        this.dataSource.filterPredicate = this.filterPredicate();
+        this.dataSource.filter = filtros;
+      });
   }
 
   ngOnDestroy(){
@@ -51,6 +59,23 @@ export class UsersTableComponent implements OnInit, OnDestroy {
     });
   }
 
+  filterPredicate(){
+    return (row: User, filters: string) => {
+      const filtros = JSON.parse(filters);
+      const dtInclusion = moment(row.dtInclusion, 'DD-MM-YYYY');
+      const dtModified = moment(row.dtModified, 'DD-MM-YYYY');
+      const status = StatusEnum[row.status.toLowerCase()];
+
+      const matchFilter = [];
+
+      matchFilter.push(dtInclusion.isBetween(moment(filtros.inclusao.inicio), moment(filtros.inclusao.fim)));
+      matchFilter.push(dtModified.isBetween(moment(filtros.alteracao.inicio), moment(filtros.alteracao.fim)));
+      matchFilter.push(filtros.status === status || filtros.status === '3');
+
+      return matchFilter.some(Boolean);
+    };
+  }
+
   showActions(event: any, row){
     let tr: HTMLElement = event.path[4];
     let td: HTMLElement = event.path[3];
@@ -67,4 +92,9 @@ export class UsersTableComponent implements OnInit, OnDestroy {
 
     this.selected[row.id - 1] = !this.selected[row.id - 1];
   }
+}
+
+enum StatusEnum {
+  ativo = 1,
+  inativo = 2
 }

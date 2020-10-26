@@ -25,7 +25,7 @@ import { SharedService } from 'src/app/shared/shared.service';
 
       <div class="container" id="right">
         <button mat-icon-button (click)="toggleFilter()"
-          class="filter mat-elevation-z4 button-white">
+          class="filter mat-elevation-z2 button-white">
           <mat-icon [inline]="true">tune</mat-icon>
         </button>
         <button mat-flat-button class="add-user button-pink"><mat-icon [inline]="true">person</mat-icon>INCLUIR USUÁRIO</button>

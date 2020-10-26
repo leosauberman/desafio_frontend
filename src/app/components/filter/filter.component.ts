@@ -20,7 +20,7 @@ export class FilterComponent implements OnInit {
     this.buildForm();
   }
 
-  buildForm(){
+  buildForm() {
     this.filtros = this.fb.group({
       inclusao: this.fb.group({
         inicio: [null],
@@ -34,7 +34,17 @@ export class FilterComponent implements OnInit {
     });
   }
 
-  toggleFilter(){
+  toggleFilter() {
     this.sharedService.filterToggle.next();
+  }
+
+  applyFilters() {
+    this.sharedService.filterValue.next(JSON.stringify(this.filtros.value));
+  }
+
+  cleanFilters(){
+    this.filtros.reset();
+    this.filtros.markAsUntouched();
+    this.sharedService.filterValue.next(null);
   }
 }

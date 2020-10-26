@@ -25,6 +25,11 @@ mat-toolbar{
     .mat-button-toggle-checked.toggle{
       color: #ffffff;
       background: $default-gradient;
+
+      .mat-button-toggle-focus-overlay{
+        border-bottom: 0;
+        background-color: transparent!important;
+      }
     }
 
     mat-form-field{
